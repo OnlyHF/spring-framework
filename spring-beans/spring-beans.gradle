@@ -26,7 +26,7 @@ compileGroovy {
 	options.compilerArgs += "-Werror"
 }
 
-// This module also builds Kotlin code and the compileKotlin task naturally depends on
+// This module also builds Kotlin code and the InputChanges task naturally depends on
 // compileJava. We need to redefine dependencies to break task cycles.
 tasks.named('compileGroovy') {
 	// Groovy only needs the declared dependencies (and not the result of Java compilation)
