@@ -1,5 +1,8 @@
 package org.springframework.qzb.server;
 
+import lombok.Getter;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.qzb.entity.UserEntity;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,4 +13,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserService {
+
+	@Getter
+	@Value("123123;张三")
+	private UserEntity userEntity;
+
 }
