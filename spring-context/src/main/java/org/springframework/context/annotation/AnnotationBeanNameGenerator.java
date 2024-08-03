@@ -104,6 +104,8 @@ public class AnnotationBeanNameGenerator implements BeanNameGenerator {
 
 
 
+	// 生成BeanName,优先使用Component注解的value值，
+	// 若没有，则使用类名：第一二位都是大写，则直接使用，否则将第一位小写
 	@Override
 	public String generateBeanName(BeanDefinition definition, BeanDefinitionRegistry registry) {
 		if (definition instanceof AnnotatedBeanDefinition annotatedBeanDefinition) {

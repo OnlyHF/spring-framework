@@ -467,7 +467,9 @@ public class ClassPathScanningCandidateComponentProvider implements EnvironmentC
 					logger.trace("Scanning " + resource);
 				}
 				try {
+					// 元数据扫描器
 					MetadataReader metadataReader = getMetadataReaderFactory().getMetadataReader(resource);
+					// 当前类是否符合条件：在扫描范围内(@Component注解，且符合@Condition注解)
 					if (isCandidateComponent(metadataReader)) {
 						ScannedGenericBeanDefinition sbd = new ScannedGenericBeanDefinition(metadataReader);
 						sbd.setSource(resource);
@@ -537,13 +539,17 @@ public class ClassPathScanningCandidateComponentProvider implements EnvironmentC
 	 * @return whether the class qualifies as a candidate component
 	 */
 	protected boolean isCandidateComponent(MetadataReader metadataReader) throws IOException {
+		// 是否配置不再扫描范围内
 		for (TypeFilter tf : this.excludeFilters) {
 			if (tf.match(metadataReader, getMetadataReaderFactory())) {
 				return false;
 			}
 		}
+		// 需要是在扫描范围内
+		// includeFilters 默认在前面会加上 @Component 注解的扫描
 		for (TypeFilter tf : this.includeFilters) {
 			if (tf.match(metadataReader, getMetadataReaderFactory())) {
+				// 是否有@Condition注解，若无，则算作是Component组件
 				return isConditionMatch(metadataReader);
 			}
 		}
@@ -565,6 +571,8 @@ public class ClassPathScanningCandidateComponentProvider implements EnvironmentC
 	}
 
 	/**
+	 * 独立bean(非内部类 || static 类) && ( 非接口/抽象类 || ( 抽象类 && 有@Lookup注解 ) ).
+	 *
 	 * Determine whether the given bean definition qualifies as candidate.
 	 * <p>The default implementation checks whether the class is not an interface
 	 * and not dependent on an enclosing class.

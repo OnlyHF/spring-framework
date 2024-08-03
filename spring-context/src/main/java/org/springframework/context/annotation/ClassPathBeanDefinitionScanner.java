@@ -274,22 +274,31 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
 		Assert.notEmpty(basePackages, "At least one base package must be specified");
 		Set<BeanDefinitionHolder> beanDefinitions = new LinkedHashSet<>();
 		for (String basePackage : basePackages) {
+			// 扫描并生成BeanDefinition
 			Set<BeanDefinition> candidates = findCandidateComponents(basePackage);
+			// 循环BeanDefinition，后置处理
 			for (BeanDefinition candidate : candidates) {
+				// scope 作用域
 				ScopeMetadata scopeMetadata = this.scopeMetadataResolver.resolveScopeMetadata(candidate);
 				candidate.setScope(scopeMetadata.getScopeName());
+				// 解析Bean name
 				String beanName = this.beanNameGenerator.generateBeanName(candidate, this.registry);
 				if (candidate instanceof AbstractBeanDefinition abstractBeanDefinition) {
+					// BeanDefinition设置默认值
 					postProcessBeanDefinition(abstractBeanDefinition, beanName);
 				}
 				if (candidate instanceof AnnotatedBeanDefinition annotatedBeanDefinition) {
+					// 解析 @Lazy、@Primary、@DependsOn、@Role、@Description 注解
 					AnnotationConfigUtils.processCommonDefinitionAnnotations(annotatedBeanDefinition);
 				}
+				// 检查容器是否存在BeanDefinition，true-表示不存在，可以加入
 				if (checkCandidate(beanName, candidate)) {
 					BeanDefinitionHolder definitionHolder = new BeanDefinitionHolder(candidate, beanName);
+					// 代理
 					definitionHolder =
 							AnnotationConfigUtils.applyScopedProxyMode(scopeMetadata, definitionHolder, this.registry);
 					beanDefinitions.add(definitionHolder);
+					// 注入到beanDefinitionMap
 					registerBeanDefinition(definitionHolder, this.registry);
 				}
 			}
@@ -304,6 +313,7 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
 	 * @param beanName the generated bean name for the given bean
 	 */
 	protected void postProcessBeanDefinition(AbstractBeanDefinition beanDefinition, String beanName) {
+		// BeanDefinition设置默认值
 		beanDefinition.applyDefaults(this.beanDefinitionDefaults);
 		if (this.autowireCandidatePatterns != null) {
 			beanDefinition.setAutowireCandidate(PatternMatchUtils.simpleMatch(this.autowireCandidatePatterns, beanName));
