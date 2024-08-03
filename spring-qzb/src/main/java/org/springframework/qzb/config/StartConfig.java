@@ -2,16 +2,10 @@ package org.springframework.qzb.config;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.ConversionServiceFactoryBean;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.qzb.entity.UserEntity;
-import org.springframework.qzb.server.StringToUserConverter;
-
-import java.util.Collections;
+import org.springframework.qzb.server.UserService;
 
 /**
  * StartConfig.
@@ -20,7 +14,18 @@ import java.util.Collections;
  * @Date 2024-08-01 07:18:49
  */
 @Configuration
-@ComponentScan("org.springframework.qzb")
+//@ComponentScan(value = "org.springframework.qzb", excludeFilters = {
+//		@ComponentScan.Filter(
+//				type = FilterType.ASSIGNABLE_TYPE,
+//				classes = {UserService.class}
+//		)
+//})
+//@ComponentScan(value = "org.springframework.qzb", includeFilters = {
+//		@ComponentScan.Filter(
+//				type = FilterType.ASSIGNABLE_TYPE,
+//				classes = {UserService.class}
+//		)
+//})
 @PropertySource("classpath:spring.properties")
 public class StartConfig {
 
@@ -78,11 +83,11 @@ public class StartConfig {
 //		return customEditorConfigurer;
 //	}
 
-	@Bean
-	public ConversionServiceFactoryBean conversionService() {
-		ConversionServiceFactoryBean factoryBean = new ConversionServiceFactoryBean();
-		factoryBean.setConverters(Collections.singleton(new StringToUserConverter()));
-		return factoryBean;
-	}
+//	@Bean
+//	public ConversionServiceFactoryBean conversionService() {
+//		ConversionServiceFactoryBean factoryBean = new ConversionServiceFactoryBean();
+//		factoryBean.setConverters(Collections.singleton(new StringToUserConverter()));
+//		return factoryBean;
+//	}
 
 }
