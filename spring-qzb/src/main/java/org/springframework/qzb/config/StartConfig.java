@@ -14,6 +14,7 @@ import org.springframework.qzb.server.UserService;
  * @Date 2024-08-01 07:18:49
  */
 @Configuration
+@ComponentScan(value = "org.springframework.qzb")
 //@ComponentScan(value = "org.springframework.qzb", excludeFilters = {
 //		@ComponentScan.Filter(
 //				type = FilterType.ASSIGNABLE_TYPE,
