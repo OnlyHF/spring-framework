@@ -1,6 +1,7 @@
 package org.springframework.qzb.postprocessor;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.PropertyValues;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import org.springframework.qzb.server.UserService;
 import org.springframework.stereotype.Component;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @Author qzb0212@126.com
  * @Date 2024-08-05 23:14:15
  */
-@Component
+//@Component
 public class UserServiceInstantiationAwareBeanPostProcessor implements InstantiationAwareBeanPostProcessor {
 
 	/**
@@ -62,5 +63,34 @@ public class UserServiceInstantiationAwareBeanPostProcessor implements Instantia
 			return new UserService();
 		}
 		return null;
+	}
+
+	/**
+	 * 实例化执行执行.
+	 *
+	 * @param bean the bean instance created, with properties not having been set yet
+	 * @param beanName the name of the bean
+	 * @return
+	 * @throws BeansException
+	 */
+	@Override
+	public boolean postProcessAfterInstantiation(Object bean, String beanName) throws BeansException {
+
+		return true;
+	}
+
+	/**
+	 * 属性注入增强.
+	 *
+	 * @param pvs the property values that the factory is about to apply (never {@code null})
+	 * @param bean the bean instance created, but whose properties have not yet been set
+	 * @param beanName the name of the bean
+	 * @return
+	 * @throws BeansException
+	 */
+	@Override
+	public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) throws BeansException {
+
+		return pvs;
 	}
 }

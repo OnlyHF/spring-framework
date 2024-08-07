@@ -15,6 +15,7 @@ public class StartApplication {
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(StartConfig.class);
 		System.out.println(context.getBean(UserService.class));
+		System.out.println(context.getBean(UserService.class).getKey());
 	}
 
 }
