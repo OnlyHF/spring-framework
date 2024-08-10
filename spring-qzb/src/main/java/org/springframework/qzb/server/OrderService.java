@@ -1,5 +1,7 @@
 package org.springframework.qzb.server;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,4 +12,15 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class OrderService {
+
+	@PostConstruct
+	public void initMethod() {
+		System.out.println("@PostConstruct 方法执行....");
+	}
+
+	@PreDestroy
+	public void destroyMethod() {
+		System.out.println("@PreDestroy 方法执行.....");
+	}
+
 }
