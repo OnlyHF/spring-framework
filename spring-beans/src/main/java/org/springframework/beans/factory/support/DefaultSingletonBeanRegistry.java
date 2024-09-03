@@ -405,6 +405,10 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	}
 
 	/**
+	 * 依赖关系记录.
+	 * dependentBeanMap：beanName(key) 被 dependentBeanName(value) 依赖.
+	 * dependenciesForBeanMap：dependentBeanName(key) 依赖 beanName.
+	 *
 	 * Register a dependent bean for the given bean,
 	 * to be destroyed before the given bean is destroyed.
 	 * @param beanName the name of the bean
