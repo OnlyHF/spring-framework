@@ -25,6 +25,8 @@ public class StartApplication {
 		DemoBService demoBService = context.getBean(DemoBService.class);
 		System.out.println(demoAService);
 		System.out.println(demoBService);
+
+		context.close();
 	}
 
 }

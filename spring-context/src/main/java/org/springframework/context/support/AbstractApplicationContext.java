@@ -589,9 +589,11 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 			StartupStep contextRefresh = this.applicationStartup.start("spring.context.refresh");
 
 			// Prepare this context for refreshing.
+			// 预备工作
 			prepareRefresh();
 
 			// Tell the subclass to refresh the internal bean factory.
+			// 获取beanFactory对象
 			ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
 
 			// Prepare the bean factory for use in this context.
@@ -710,6 +712,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 * @see #getBeanFactory()
 	 */
 	protected ConfigurableListableBeanFactory obtainFreshBeanFactory() {
+		// Web容器支持多次refresh，且在这里加载BeanDefinition，非Web容器则只支持一次refresh
 		refreshBeanFactory();
 		return getBeanFactory();
 	}

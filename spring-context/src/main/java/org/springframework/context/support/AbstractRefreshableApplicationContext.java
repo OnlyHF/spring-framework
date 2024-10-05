@@ -119,6 +119,7 @@ public abstract class AbstractRefreshableApplicationContext extends AbstractAppl
 	 */
 	@Override
 	protected final void refreshBeanFactory() throws BeansException {
+		// web容器中，支持refresh容器
 		if (hasBeanFactory()) {
 			destroyBeans();
 			closeBeanFactory();
