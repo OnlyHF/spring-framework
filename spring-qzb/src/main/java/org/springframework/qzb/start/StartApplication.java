@@ -27,6 +27,8 @@ public class StartApplication {
 		System.out.println(demoAService);
 		System.out.println(demoBService);
 
+//		context.close();
+
 		UserService bean = context.getBean(UserService.class);
 		UserService bean2 = context.getBean(UserService.class);
 		System.out.println(bean);
