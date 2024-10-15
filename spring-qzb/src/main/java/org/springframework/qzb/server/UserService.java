@@ -3,6 +3,7 @@ package org.springframework.qzb.server;
 import jakarta.annotation.PostConstruct;
 import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.qzb.entity.UserEntity;
@@ -14,7 +15,8 @@ import org.springframework.stereotype.Service;
  * @Author qzb0212@126.com
  * @Date 2024-07-31 23:11:17
  */
-@Data
+//@Data
+@Setter
 @Service
 public class UserService implements InitializingBean {
 

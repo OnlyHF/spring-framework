@@ -2,12 +2,10 @@ package org.springframework.qzb.config;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.qzb.entity.UserEntity;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * StartConfig.
@@ -30,6 +28,8 @@ import org.springframework.qzb.entity.UserEntity;
 //		)
 //})
 @PropertySource("classpath:spring.properties")
+@EnableAspectJAutoProxy
+@EnableAsync
 public class StartConfig {
 
 	/**

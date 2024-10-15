@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
  * Spring自动注入验证.
  */
 @Service
-@ToString
 public class DemoAService {
 
 	private DemoBService demoBService;

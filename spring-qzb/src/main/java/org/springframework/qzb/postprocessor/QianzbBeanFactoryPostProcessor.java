@@ -1,6 +1,7 @@
 package org.springframework.qzb.postprocessor;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,8 @@ public class QianzbBeanFactoryPostProcessor implements BeanFactoryPostProcessor 
 	@Override
 	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
 		System.out.println("BeanFactory 后置处理器");
+		BeanDefinition beanDefinition = beanFactory.getBeanDefinition("userService");
+		beanDefinition.setScope("prototype");
 	}
 
 }
