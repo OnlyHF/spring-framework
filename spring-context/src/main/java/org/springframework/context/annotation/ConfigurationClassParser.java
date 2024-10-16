@@ -270,6 +270,8 @@ class ConfigurationClassParser {
 
 		if (configClass.getMetadata().isAnnotated(Component.class.getName())) {
 			// Recursively process any member (nested) classes first
+			// 存在内部类，且内部类也是配置类时，则优先处理内部配置类（递归处理）
+			// 此处配置类判断条件为，存在注解：@Component、@ComponentScan、@Import、@ImportResource、@Bean
 			processMemberClasses(configClass, sourceClass, filter);
 		}
 
