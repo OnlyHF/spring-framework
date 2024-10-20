@@ -2,10 +2,7 @@ package org.springframework.qzb.start;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.qzb.config.StartConfig;
-import org.springframework.qzb.server.BeanDefinitionRegistryDemo;
-import org.springframework.qzb.server.DemoAService;
-import org.springframework.qzb.server.DemoBService;
-import org.springframework.qzb.server.UserService;
+import org.springframework.qzb.server.*;
 
 /**
  * StartApplication.
@@ -35,6 +32,9 @@ public class StartApplication {
 		System.out.println(bean2);
 
 		System.out.println(context.getBean(BeanDefinitionRegistryDemo.class));
+
+
+		System.out.println(context.getBean(C.class));
 	}
 
 }

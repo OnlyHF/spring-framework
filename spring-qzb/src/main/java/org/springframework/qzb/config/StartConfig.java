@@ -30,6 +30,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @PropertySource("classpath:spring.properties")
 @EnableAspectJAutoProxy
 @EnableAsync
+//@Import(OrderFactoryBeanPostProcessor.class)
 public class StartConfig {
 
 	/**
