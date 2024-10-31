@@ -5,6 +5,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.qzb.entity.UserEntity;
+import org.springframework.qzb.postprocessor.QzbImportBeanDefinitionRegistrar;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
@@ -31,6 +32,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAspectJAutoProxy
 @EnableAsync
 //@Import(OrderFactoryBeanPostProcessor.class)
+@Import(QzbImportBeanDefinitionRegistrar.class)
 public class StartConfig {
 
 	/**

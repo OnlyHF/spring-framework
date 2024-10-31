@@ -19,22 +19,25 @@ public class StartApplication {
 //
 //		context.close();
 
-		DemoAService demoAService = context.getBean(DemoAService.class);
-		DemoBService demoBService = context.getBean(DemoBService.class);
-		System.out.println(demoAService);
-		System.out.println(demoBService);
+//		DemoAService demoAService = context.getBean(DemoAService.class);
+//		DemoBService demoBService = context.getBean(DemoBService.class);
+//		System.out.println(demoAService);
+//		System.out.println(demoBService);
+//
+////		context.close();
+//
+//		UserService bean = context.getBean(UserService.class);
+//		UserService bean2 = context.getBean(UserService.class);
+//		System.out.println(bean);
+//		System.out.println(bean2);
+//
+//		System.out.println(context.getBean(BeanDefinitionRegistryDemo.class));
+//
+//
+//		System.out.println(context.getBean(C.class));
 
-//		context.close();
-
-		UserService bean = context.getBean(UserService.class);
-		UserService bean2 = context.getBean(UserService.class);
-		System.out.println(bean);
-		System.out.println(bean2);
-
-		System.out.println(context.getBean(BeanDefinitionRegistryDemo.class));
-
-
-		System.out.println(context.getBean(C.class));
+		ImportBeanDefinitionRegistrarService bean = context.getBean(ImportBeanDefinitionRegistrarService.class);
+		bean.test();
 	}
 
 }
