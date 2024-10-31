@@ -3,6 +3,6 @@
 
 <beans>
 
-	<bean id="userService" class="org.springframework.qzb.server.UserService"/>
+	<bean id="userService" class="org.springframework.qzb.ioc.server.UserService"/>
 
 </beans>
