@@ -11,4 +11,6 @@ dependencies {
     api("org.projectlombok:lombok:1.18.34")
     api("org.aspectj:aspectjrt:1.9.22.1")
     api("org.aspectj:aspectjweaver:1.9.22.1")
+    implementation group: 'cglib', name: 'cglib', version: '3.3.0'
+    implementation group: 'asm', name: 'asm', version: '3.3'
 }
