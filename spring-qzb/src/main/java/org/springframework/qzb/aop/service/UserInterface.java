@@ -4,4 +4,6 @@ public interface UserInterface {
 
 	void test();
 
+	void hello();
+
 }
