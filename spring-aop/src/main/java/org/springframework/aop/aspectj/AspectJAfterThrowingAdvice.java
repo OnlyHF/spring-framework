@@ -33,7 +33,7 @@ import org.springframework.lang.Nullable;
  */
 @SuppressWarnings("serial")
 public class AspectJAfterThrowingAdvice extends AbstractAspectJAdvice
-		implements MethodInterceptor, AfterAdvice, Serializable {
+			implements MethodInterceptor, AfterAdvice, Serializable {
 
 	public AspectJAfterThrowingAdvice(
 			Method aspectJBeforeAdviceMethod, AspectJExpressionPointcut pointcut, AspectInstanceFactory aif) {
