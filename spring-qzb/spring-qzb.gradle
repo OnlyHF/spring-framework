@@ -7,10 +7,13 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
     optional(project(":spring-context"))
     optional(project(":spring-core"))
+    optional(project(":spring-tx"))
+    optional(project(":spring-jdbc"))
     api("jakarta.annotation:jakarta.annotation-api")
     api("org.projectlombok:lombok:1.18.34")
     api("org.aspectj:aspectjrt:1.9.22.1")
     api("org.aspectj:aspectjweaver:1.9.22.1")
     implementation group: 'cglib', name: 'cglib', version: '3.3.0'
     implementation group: 'asm', name: 'asm', version: '3.3'
+    implementation 'com.mysql:mysql-connector-j:8.4.0'
 }
