@@ -266,6 +266,7 @@ public class DataSourceTransactionManager extends AbstractPlatformTransactionMan
 		try {
 			if (!txObject.hasConnectionHolder() ||
 					txObject.getConnectionHolder().isSynchronizedWithTransaction()) {
+				// 若事务中没有数据库连接，则通过DataSource获取一个Connection连接对象
 				Connection newCon = obtainDataSource().getConnection();
 				if (logger.isDebugEnabled()) {
 					logger.debug("Acquired Connection [" + newCon + "] for JDBC transaction");

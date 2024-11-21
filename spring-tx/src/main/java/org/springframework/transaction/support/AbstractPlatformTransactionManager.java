@@ -390,6 +390,7 @@ public abstract class AbstractPlatformTransactionManager
 		}
 
 		// No existing transaction found -> check propagation behavior to find out how to proceed.
+		// 强制前提要求有事务，若没有事务，则抛异常
 		if (def.getPropagationBehavior() == TransactionDefinition.PROPAGATION_MANDATORY) {
 			throw new IllegalTransactionStateException(
 					"No existing transaction found for transaction marked with propagation 'mandatory'");
@@ -411,6 +412,7 @@ public abstract class AbstractPlatformTransactionManager
 		}
 		else {
 			// Create "empty" transaction: no actual transaction, but potentially synchronization.
+			// 创建一个空的事务：实则没有开启一个事务
 			if (def.getIsolationLevel() != TransactionDefinition.ISOLATION_DEFAULT && logger.isWarnEnabled()) {
 				logger.warn("Custom isolation level specified but no actual transaction initiated; " +
 						"isolation level will effectively be ignored: " + def);
@@ -427,11 +429,13 @@ public abstract class AbstractPlatformTransactionManager
 			TransactionDefinition definition, Object transaction, boolean debugEnabled)
 			throws TransactionException {
 
+		// 存在事务，但不需要事务，则抛异常
 		if (definition.getPropagationBehavior() == TransactionDefinition.PROPAGATION_NEVER) {
 			throw new IllegalTransactionStateException(
 					"Existing transaction found for transaction marked with propagation 'never'");
 		}
 
+		// 当前已存在事务，当执行的方法中不支持事务，则将已有事务挂起，然后以无事务的方法运行
 		if (definition.getPropagationBehavior() == TransactionDefinition.PROPAGATION_NOT_SUPPORTED) {
 			if (debugEnabled) {
 				logger.debug("Suspending current transaction");
